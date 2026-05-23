@@ -1,5 +1,5 @@
 import streamlit as st
-import pickle
+import joblib
 import pandas as pd
 
 # Page configuration
@@ -16,7 +16,7 @@ st.set_page_config(
 
 # Placeholder for model loading to avoid FileNotFoundError during app.py creation
 try:
-    model = pickle.load(open("model.pkl", "rb"))
+    model = joblib.load("model.pkl")
 except FileNotFoundError:
     st.error("Error: 'model.pkl' not found. Please ensure the model is saved to disk.")
     st.stop() # Stop the Streamlit app if model not found
